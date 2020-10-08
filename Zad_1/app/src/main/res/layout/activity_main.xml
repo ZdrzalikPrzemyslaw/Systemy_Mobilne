@@ -6,6 +6,30 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <TextView
+        android:id="@+id/equals"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="71dp"
+        android:gravity="center"
+        android:text="x"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/third_input"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/third_input"
+        android:layout_width="40dp"
+        android:layout_height="57dp"
+        android:ems="10"
+        android:inputType="phone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/equals"
+        app:layout_constraintStart_toEndOf="@+id/x_pow_1"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <Button
         android:id="@+id/button_compute"
         android:layout_width="wrap_content"
@@ -14,6 +38,7 @@
         android:layout_marginTop="426dp"
         android:layout_marginEnd="162dp"
         android:layout_marginBottom="257dp"
+        android:onClick="calculateButtonOnClick"
         android:text="Button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -22,29 +47,66 @@
 
     <EditText
         android:id="@+id/first_input"
-        android:layout_width="52dp"
-        android:layout_height="37dp"
-        android:layout_marginStart="69dp"
-        android:layout_marginTop="347dp"
-        android:layout_marginEnd="290dp"
-        android:layout_marginBottom="347dp"
+        android:layout_width="40dp"
+        android:layout_height="57dp"
+        android:layout_marginStart="60dp"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Name"
+        android:inputType="phone"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/x_pow_2"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/second_input"
+        android:layout_width="40dp"
+        android:layout_height="57dp"
+        android:ems="10"
+        android:inputType="phone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/x_pow_1"
+        app:layout_constraintStart_toEndOf="@+id/x_pow_2"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/x_pow_2"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="231dp"
+        android:layout_height="50dp"
+        android:gravity="center"
         android:text="x"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintEnd_toStartOf="@+id/second_input"
         app:layout_constraintStart_toEndOf="@+id/first_input"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/x_pow_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="x"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/third_input"
+        app:layout_constraintStart_toEndOf="@+id/second_input"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/final_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="104dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="104dp"
+        android:layout_marginBottom="300dp"
+        android:maxLines="5"
+        android:paddingLeft="100dp"
+        android:paddingRight="100dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_compute"
+        app:layout_constraintVertical_bias="0.0" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
