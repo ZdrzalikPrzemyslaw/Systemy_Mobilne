@@ -49,9 +49,7 @@ public class MainActivity extends AppCompatActivity {
             } else {
                 textView.setText("The equation doesn't represent a quadratic function");
             }
-        } catch (NumberFormatException e) {
-            return;
-
+        } catch (NumberFormatException ignored) {
         }
 
     }
