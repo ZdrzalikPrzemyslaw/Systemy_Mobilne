@@ -28,26 +28,31 @@ public class MainActivity extends AppCompatActivity {
             double first_val = Double.parseDouble(((EditText) findViewById(R.id.first_input)).getText().toString());
             double second_val = Double.parseDouble(((EditText) findViewById(R.id.second_input)).getText().toString());
             double third_val = Double.parseDouble(((EditText) findViewById(R.id.third_input)).getText().toString());
-            double discriminant = (second_val * second_val) - 4 * first_val * third_val;
             TextView textView = (TextView) findViewById(R.id.final_text);
-            if (discriminant > 0) {
-                double result_1 = (-second_val - Math.sqrt(discriminant)) / (2 * first_val);
-                double result_2 = (-second_val + Math.sqrt(discriminant))  / (2 * first_val);
-                textView.setText("The quadratic equation has two real roots, the first root is "
-                        + df2.format(result_1) + ", the second root is " + df2.format(result_2) + ". The square discriminant equals "
-                        + df2.format(discriminant));
-            } else if (discriminant == 0) {
-                double result_1 = (-second_val) / (2 * first_val);
-                textView.setText("The quadratic equation has one real roots, the first root is "
-                        + df2.format(result_1) + ". The square discriminant equals "
-                        + df2.format(discriminant));
+            if (first_val != 0) {
+                double discriminant = (second_val * second_val) - 4 * first_val * third_val;
+                if (discriminant > 0) {
+                    double result_1 = (-second_val - Math.sqrt(discriminant)) / (2 * first_val);
+                    double result_2 = (-second_val + Math.sqrt(discriminant)) / (2 * first_val);
+                    textView.setText("The quadratic equation has two real roots, the first root is "
+                            + df2.format(result_1) + ", the second root is " + df2.format(result_2) + ". The square discriminant equals "
+                            + df2.format(discriminant));
+                } else if (discriminant == 0) {
+                    double result_1 = (-second_val) / (2 * first_val);
+                    textView.setText("The quadratic equation has one real roots, the first root is "
+                            + df2.format(result_1) + ". The square discriminant equals "
+                            + df2.format(discriminant));
+                } else {
+                    textView.setText("The quadratic equation has no real roots. The square discriminant equals "
+                            + df2.format(discriminant));
+                }
             } else {
-                textView.setText("The quadratic equation has no real roots. The square discriminant equals "
-                        + df2.format(discriminant));
+                textView.setText("The equation doesn't represent a quadratic function");
             }
         } catch (NumberFormatException e) {
             return;
-        }
-    }
 
+        }
+
+    }
 }
