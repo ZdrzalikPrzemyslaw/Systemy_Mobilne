@@ -34,17 +34,12 @@ public class MainActivity extends AppCompatActivity {
                 if (discriminant > 0) {
                     double result_1 = (-second_val - Math.sqrt(discriminant)) / (2 * first_val);
                     double result_2 = (-second_val + Math.sqrt(discriminant)) / (2 * first_val);
-                    textView.setText("The quadratic equation has two real roots, the first root is "
-                            + df2.format(result_1) + ", the second root is " + df2.format(result_2) + ". The square discriminant equals "
-                            + df2.format(discriminant));
+                    textView.setText(String.format("The quadratic equation has two real roots, the first root is %s, the second root is %s. The square discriminant equals %s", df2.format(result_1), df2.format(result_2), df2.format(discriminant)));
                 } else if (discriminant == 0) {
                     double result_1 = (-second_val) / (2 * first_val);
-                    textView.setText("The quadratic equation has one real roots, the first root is "
-                            + df2.format(result_1) + ". The square discriminant equals "
-                            + df2.format(discriminant));
+                    textView.setText(String.format("The quadratic equation has one real roots, the first root is %s. The square discriminant equals %s", df2.format(result_1), df2.format(discriminant)));
                 } else {
-                    textView.setText("The quadratic equation has no real roots. The square discriminant equals "
-                            + df2.format(discriminant));
+                    textView.setText(String.format("The quadratic equation has no real roots. The square discriminant equals %s", df2.format(discriminant)));
                 }
             } else {
                 textView.setText("The equation doesn't represent a quadratic function");
