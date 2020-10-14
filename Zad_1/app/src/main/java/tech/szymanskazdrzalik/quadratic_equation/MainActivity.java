@@ -5,6 +5,7 @@ import android.text.Html;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -18,9 +19,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ((TextView) findViewById(R.id.x_pow_2)).setText(Html.fromHtml("<i><b>X<sup>2</sup></b></i> +"));
-        ((TextView) findViewById(R.id.x_pow_1)).setText(Html.fromHtml("<i><b>X</b></i> +"));
-        ((TextView) findViewById(R.id.equals)).setText(Html.fromHtml("<b>= 0</b>"));
+        ((TextView) findViewById(R.id.x_pow_2)).setText(Html.fromHtml(getString(R.string.x_squared_string)));
+        ((TextView) findViewById(R.id.x_pow_1)).setText(Html.fromHtml(getString(R.string.x_power_1_string)));
+        ((TextView) findViewById(R.id.equals)).setText(Html.fromHtml(getString(R.string.equals_0_string)));
     }
 
     public void calculateButtonOnClick(View v) {
@@ -34,17 +35,18 @@ public class MainActivity extends AppCompatActivity {
                 if (discriminant > 0) {
                     double result_1 = (-second_val - Math.sqrt(discriminant)) / (2 * first_val);
                     double result_2 = (-second_val + Math.sqrt(discriminant)) / (2 * first_val);
-                    textView.setText(String.format("The quadratic equation has two real roots, the first root is %s, the second root is %s. The square discriminant equals %s", df2.format(result_1), df2.format(result_2), df2.format(discriminant)));
+                    textView.setText(String.format(getString(R.string.has_2_roots_result_string), df2.format(result_1), df2.format(result_2), df2.format(discriminant)));
                 } else if (discriminant == 0) {
                     double result_1 = (-second_val) / (2 * first_val);
-                    textView.setText(String.format("The quadratic equation has one real roots, the first root is %s. The square discriminant equals %s", df2.format(result_1), df2.format(discriminant)));
+                    textView.setText(String.format(getString(R.string.has_one_root_result_string), df2.format(result_1), df2.format(discriminant)));
                 } else {
-                    textView.setText(String.format("The quadratic equation has no real roots. The square discriminant equals %s", df2.format(discriminant)));
+                    textView.setText(String.format(getString(R.string.has_no_roots_result_string), df2.format(discriminant)));
                 }
             } else {
-                textView.setText("The equation doesn't represent a quadratic function");
+                textView.setText(R.string.not_quadratic_result_string);
             }
-        } catch (NumberFormatException ignored) {
+        } catch (NumberFormatException e) {
+            Toast.makeText(this, R.string.invalid_input, Toast.LENGTH_SHORT).show();
         }
 
     }

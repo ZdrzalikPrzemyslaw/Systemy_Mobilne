@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">Quadratic Equation</string>
+    <string name="x_squared_string"><![CDATA[<i><b>X<sup>2</sup></b></i> +]]></string>
+    <string name="x_power_1_string"><![CDATA[<i><b>X</b></i> +]]></string>
+    <string name="equals_0_string"><![CDATA[<b>= 0</b>]]></string>
+    <string name="has_2_roots_result_string">The quadratic equation has two real roots, the first root is %s, the second root is %s. The square discriminant equals %s</string>
+    <string name="has_one_root_result_string">The quadratic equation has one real roots, the first root is %s. The square discriminant equals %s</string>
+    <string name="has_no_roots_result_string">The quadratic equation has no real roots. The square discriminant equals %s</string>
+    <string name="not_quadratic_result_string">The equation doesn\'t represent a quadratic function</string>
+    <string name="invalid_input">Invalid input</string>
+    <string name="x">x</string>
+    <string name="button">Button</string>
 </resources>
