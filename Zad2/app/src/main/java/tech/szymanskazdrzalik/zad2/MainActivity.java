@@ -1,18 +1,11 @@
 package tech.szymanskazdrzalik.zad2;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
-
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
 import android.view.View;
 
-import android.view.Menu;
-import android.view.MenuItem;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -20,43 +13,45 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
 
     public void secondActivityButtonOnClick(View v) {
         Intent startIntent = new Intent(this, SecondActivity.class);
         startActivity(startIntent);
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+    public void googleButtonOnClick(View v) {
+        String google = "http://www.google.com";
+        Uri webadress = Uri.parse(google);
+        Intent gotoGoogle = new Intent(Intent.ACTION_VIEW, webadress);
+        if (gotoGoogle.resolveActivity(getPackageManager()) != null) {
+            startActivity(gotoGoogle);
         }
-
-        return super.onOptionsItemSelected(item);
     }
+
+
+    public void mapButtonOnClick(View v) {
+        Uri location = Uri.parse("geo:0,0?q=1600+Amphitheatre+Parkway,+Mountain+View,+California");
+        Intent mapIntent = new Intent(Intent.ACTION_VIEW, location);
+        if (mapIntent.resolveActivity(getPackageManager()) != null) {
+            startActivity(mapIntent);
+        }
+    }
+
+    public void phoneButtonOnClick(View v) {
+        Uri number = Uri.parse("tel:5551234");
+        Intent callIntent = new Intent(Intent.ACTION_DIAL, number);
+        if (callIntent.resolveActivity(getPackageManager()) != null) {
+            startActivity(callIntent);
+        }
+    }
+
+    public void computeDeltaOnClick(View v) {
+        Intent launchIntent = getPackageManager().getLaunchIntentForPackage("tech.szymanskazdrzalik.quadratic_equation");
+        if (launchIntent != null) {
+            startActivity(launchIntent);//null pointer check in case package name was not found
+        }
+    }
+
 }

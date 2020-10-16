@@ -12,4 +12,7 @@
     <string name="hello_world">hello_world</string>
     <string name="second_activity">second_activity</string>
     <string name="google">google</string>
+    <string name="map">MAP</string>
+    <string name="phone">PHONE</string>
+    <string name="compute_delta">COMPUTE DELTA</string>
 </resources>
