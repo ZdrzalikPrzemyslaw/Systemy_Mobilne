@@ -77,8 +77,8 @@ public class DrawView extends View implements View.OnTouchListener {
     }
 
     @Override
-    protected void onSizeChanged(int w, int h, int oldw, int oldh) {
-        super.onSizeChanged(w, h, oldw, oldh);
+    protected void onSizeChanged(int w, int h, int oldW, int oldH) {
+        super.onSizeChanged(w, h, oldW, oldH);
         mBitmap = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888);
         mCanvas = new Canvas(mBitmap);
     }
@@ -144,8 +144,7 @@ public class DrawView extends View implements View.OnTouchListener {
         if (!eraserMode) {
             this.mPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.CLEAR));
             this.eraserMode = true;
-        }
-        else {
+        } else {
             this.mPaint.setXfermode(null);
             this.eraserMode = false;
         }
