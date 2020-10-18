@@ -10,16 +10,10 @@ import android.graphics.Point;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.Window;
 
 import androidx.annotation.Nullable;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class DrawView extends View implements View.OnTouchListener {
-
-    private final List<CustomPoint> pointList = new ArrayList<>();
 
     private int chosenColour = Color.RED;
     private int radius = 30;
@@ -35,30 +29,6 @@ public class DrawView extends View implements View.OnTouchListener {
         mCanvas = new Canvas(mBitmap);
     }
 
-    private class CustomPoint {
-
-        private Point point;
-        private int radius;
-        private Paint paint;
-
-        public CustomPoint(Point point, int radius, Paint paint) {
-            this.point = point;
-            this.radius = radius;
-            this.paint = paint;
-        }
-
-        public Point getPoint() {
-            return point;
-        }
-
-        public int getRadius() {
-            return radius;
-        }
-
-        public Paint getPaint() {
-            return paint;
-        }
-    }
 
     /**
      * {@inheritDoc}
@@ -104,12 +74,12 @@ public class DrawView extends View implements View.OnTouchListener {
      */
     @Override
     public boolean onTouch(View v, MotionEvent event) {
-        this.addPoint(event);
+        this.drawPoint(event);
         invalidate();
         return true;
     }
 
-    private void addPoint(MotionEvent event) {
+    private void drawPoint(MotionEvent event) {
         Point point = new Point();
         point.x = (int) event.getX();
         point.y = (int) event.getY();
@@ -118,9 +88,7 @@ public class DrawView extends View implements View.OnTouchListener {
         if (this.isBlurred) {
             paint.setMaskFilter(new BlurMaskFilter(8, BlurMaskFilter.Blur.NORMAL));
         }
-        CustomPoint customPoint = new CustomPoint(point, radius, paint);
-        this.mCanvas.drawCircle(customPoint.getPoint().x, customPoint.getPoint().y, customPoint.getRadius(), customPoint.getPaint());
-        pointList.add(customPoint);
+        this.mCanvas.drawCircle(point.x, point.y, this.radius, paint);
     }
 
     public void erase() {
