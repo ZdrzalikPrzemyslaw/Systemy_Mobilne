@@ -162,6 +162,10 @@ public class DrawView extends View implements View.OnTouchListener {
         this.mPaint.setStrokeWidth(this.mPaint.getStrokeWidth() + 1);
     }
 
+    public void setThickness(int val) {
+        this.mPaint.setStrokeWidth(val);
+    }
+
     public void thicknessDown() {
         this.mPaint.setStrokeWidth(this.mPaint.getStrokeWidth() - 1);
     }

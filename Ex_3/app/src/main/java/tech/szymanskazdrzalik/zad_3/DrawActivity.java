@@ -1,10 +1,13 @@
 package tech.szymanskazdrzalik.zad_3;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.app.Dialog;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
+import android.widget.NumberPicker;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import top.defaults.colorpicker.ColorPickerPopup;
 
@@ -38,6 +41,7 @@ public class DrawActivity extends AppCompatActivity {
         this.drawView.eraser();
     }
 
+
     public void colourButtonOnClick(View v) {
         new ColorPickerPopup.Builder(this)
                 .initialColor(Color.RED) // Set initial color
@@ -63,12 +67,26 @@ public class DrawActivity extends AppCompatActivity {
             findViewById(R.id.buttonsLinearLayout).setVisibility(View.VISIBLE);
     }
 
-    public void sizeUpButtonOnClick(View v) {
-        this.drawView.thicknessUp();
+    public void sizeButtonOnClick(View v) {
+        this.showDialog();
     }
 
-    public void sizeDownButtonOnClick(View v) {
-        this.drawView.thicknessDown();
+    private void showDialog() {
+        final Dialog d = new Dialog(DrawActivity.this);
+        d.setTitle("NumberPicker");
+        d.setContentView(R.layout.dialog);
+        Button b1 = (Button) d.findViewById(R.id.buttonSet);
+        Button b2 = (Button) d.findViewById(R.id.buttonCancel);
+        final NumberPicker np = (NumberPicker) d.findViewById(R.id.numberPicker1);
+        np.setMaxValue(100);
+        np.setMinValue(0);
+        np.setWrapSelectorWheel(true);
+        b1.setOnClickListener(v -> {
+            drawView.setThickness(np.getValue());
+            d.dismiss();
+        });
+        b2.setOnClickListener(v -> d.dismiss());
+        d.show();
     }
 
 }

@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Zad_3</string>
     <string name="draw_activity">Draw Activity</string>
-    <string name="clear_canvas">CLEAR CANVAS</string>
+    <string name="clear_canvas">CLEAR</string>
     <string name="normal">NORMAL</string>
     <string name="blur">BLUR</string>
     <string name="emboss">EMBOSS</string>
@@ -9,6 +9,6 @@
     <string name="colour">COLOUR</string>
     <string name="visibility">VISIBILITY</string>
     <string name="size">SIZE</string>
-    <string name="size_up">+</string>
-    <string name="size_down">-</string>
+    <string name="cancel">Cancel</string>
+    <string name="set">Set</string>
 </resources>

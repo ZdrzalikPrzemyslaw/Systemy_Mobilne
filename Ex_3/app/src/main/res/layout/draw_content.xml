@@ -65,18 +65,11 @@
                 android:text="@string/colour" />
 
             <Button
-                android:id="@+id/sizeUpButton"
+                android:id="@+id/sizeButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:onClick="sizeUpButtonOnClick"
-                android:text="@string/size_up" />
-
-            <Button
-                android:id="@+id/sizeDownButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="sizeDownButtonOnClick"
-                android:text="@string/size_down" />
+                android:onClick="sizeButtonOnClick"
+                android:text="@string/size" />
         </LinearLayout>
 
         <Button
