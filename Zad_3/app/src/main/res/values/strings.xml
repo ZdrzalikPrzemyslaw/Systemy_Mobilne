@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Zad_3</string>
+    <string name="draw_activity">Draw Activity</string>
 </resources>
