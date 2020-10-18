@@ -55,6 +55,13 @@
                 android:layout_height="wrap_content"
                 android:onClick="eraserButtonOnClick"
                 android:text="@string/eraser" />
+
+            <Button
+                android:id="@+id/colour"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="colourButtonOnCLick"
+                android:text="@string/colour" />
         </LinearLayout>
 
     </RelativeLayout>

@@ -6,4 +6,5 @@
     <string name="blur">BLUR</string>
     <string name="emboss">EMBOSS</string>
     <string name="eraser">ERASER</string>
+    <string name="colour">COLOUR</string>
 </resources>
