@@ -27,4 +27,8 @@ public class DrawActivity extends AppCompatActivity {
         this.drawView.setBlur();
     }
 
+    public void setEmbossButtonOnClick(View v) {
+        this.drawView.setEmboss();
+    }
+
 }

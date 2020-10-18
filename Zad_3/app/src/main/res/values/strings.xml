@@ -4,4 +4,5 @@
     <string name="erase">Erase</string>
     <string name="normal">NORMAL</string>
     <string name="blur">BLUR</string>
+    <string name="emboss">EMBOSS</string>
 </resources>
