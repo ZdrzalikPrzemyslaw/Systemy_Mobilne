@@ -63,4 +63,12 @@ public class DrawActivity extends AppCompatActivity {
             findViewById(R.id.buttonsLinearLayout).setVisibility(View.VISIBLE);
     }
 
+    public void sizeUpButtonOnClick(View v) {
+        this.drawView.thicknessUp();
+    }
+
+    public void sizeDownButtonOnClick(View v) {
+        this.drawView.thicknessDown();
+    }
+
 }

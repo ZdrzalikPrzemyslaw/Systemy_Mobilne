@@ -8,4 +8,7 @@
     <string name="eraser">ERASER</string>
     <string name="colour">COLOUR</string>
     <string name="visibility">VISIBILITY</string>
+    <string name="size">SIZE</string>
+    <string name="size_up">+</string>
+    <string name="size_down">-</string>
 </resources>

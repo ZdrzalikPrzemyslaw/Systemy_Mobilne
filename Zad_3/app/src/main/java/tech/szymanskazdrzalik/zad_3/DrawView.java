@@ -158,8 +158,12 @@ public class DrawView extends View implements View.OnTouchListener {
         this.mPaint.setColor(colour);
     }
 
-    public void setRadius(int radius) {
-        this.mPaint.setStrokeWidth(radius);
+    public void thicknessUp() {
+        this.mPaint.setStrokeWidth(this.mPaint.getStrokeWidth() + 1);
+    }
+
+    public void thicknessDown() {
+        this.mPaint.setStrokeWidth(this.mPaint.getStrokeWidth() - 1);
     }
 
     @Override
