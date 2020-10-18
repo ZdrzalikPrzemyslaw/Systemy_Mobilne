@@ -17,14 +17,36 @@ import java.util.List;
 
 public class DrawView extends View implements View.OnTouchListener {
 
-    private final Paint paintNormal = new Paint();
-    private final Paint paintBlured = new Paint();
-    private final List<Paint> paints = new ArrayList<>();
+    private final List<CustomPoint> pointList = new ArrayList<>();
 
-    private final List<Point> pointListNormal = new ArrayList<>();
-    private final List<Point> pointListBlur = new ArrayList<>();
-    private List<Point> chosenList = pointListNormal;
-    private final List<List<Point>> allPointLists = new ArrayList<>();
+    private int chosenColour = Color.RED;
+    private int radius = 30;
+    private boolean isBlurred = false;
+
+    private class CustomPoint {
+
+        private Point point;
+        private int radius;
+        private Paint paint;
+
+        public CustomPoint(Point point, int radius, Paint paint) {
+            this.point = point;
+            this.radius = radius;
+            this.paint = paint;
+        }
+
+        public Point getPoint() {
+            return point;
+        }
+
+        public int getRadius() {
+            return radius;
+        }
+
+        public Paint getPaint() {
+            return paint;
+        }
+    }
 
     /**
      * {@inheritDoc}
@@ -62,60 +84,57 @@ public class DrawView extends View implements View.OnTouchListener {
         setFocusable(true);
         setFocusableInTouchMode(true);
         this.setOnTouchListener(this);
-        this.initPaints();
-        this.initPointLists();
     }
 
-    private void initPaints() {
-        paints.add(this.paintNormal);
-        paints.add(this.paintBlured);
-        for (Paint i : paints) {
-            i.setColor(Color.RED);
-        }
-        paintBlured.setMaskFilter(new BlurMaskFilter(8, BlurMaskFilter.Blur.NORMAL));
-    }
-
-    private void initPointLists() {
-        this.allPointLists.add(pointListBlur);
-        this.allPointLists.add(pointListNormal);
-    }
 
     /**
      * {@inheritDoc}
      */
     @Override
     public boolean onTouch(View v, MotionEvent event) {
-        Point point = new Point();
-        point.x = (int) event.getX();
-        point.y = (int) event.getY();
-        chosenList.add(point);
+        this.addPoint(event);
         invalidate();
         return true;
     }
 
-    public void erase() {
-        for (List<Point> i : this.allPointLists) {
-            i.clear();
+    private void addPoint(MotionEvent event) {
+        Point point = new Point();
+        point.x = (int) event.getX();
+        point.y = (int) event.getY();
+        Paint paint = new Paint();
+        paint.setColor(this.chosenColour);
+        if (this.isBlurred) {
+            paint.setMaskFilter(new BlurMaskFilter(8, BlurMaskFilter.Blur.NORMAL));
         }
+        CustomPoint customPoint = new CustomPoint(point, radius, paint);
+        pointList.add(customPoint);
+    }
+
+    public void erase() {
+        this.pointList.clear();
         this.invalidate();
     }
 
     public void setBlur() {
-        this.chosenList = this.pointListBlur;
+        this.isBlurred = true;
     }
 
     public void setNormal() {
-        this.chosenList = this.pointListNormal;
+        this.isBlurred = false;
+    }
+
+    public void setChosenColour(int colour) {
+        this.chosenColour = colour;
+    }
+
+    public void setRadius(int radius) {
+        this.radius = radius;
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
-        for (Point point : pointListNormal) {
-            canvas.drawCircle(point.x, point.y, 30, paintNormal);
-        }
-
-        for (Point point : pointListBlur) {
-            canvas.drawCircle(point.x, point.y, 30, paintBlured);
+        for (CustomPoint point : pointList) {
+            canvas.drawCircle(point.getPoint().x, point.getPoint().y, point.getRadius(), point.getPaint());
         }
     }
 }
