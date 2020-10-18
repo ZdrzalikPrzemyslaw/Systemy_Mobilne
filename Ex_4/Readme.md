@@ -4,4 +4,4 @@ The exercise completed in the project was to create an application to roll 1 to 
 
 <p align="center">
     <img src="https://github.com/ZdrzalikPrzemyslaw/Systemy_Mobilne/blob/main/.github/Ex_4.png"
-     alt="Approximation plot" height="700"/>
+     alt="Ex 4 picture" height="700"/>
