@@ -6,9 +6,12 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import java.util.Random;
 
@@ -59,7 +62,6 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                 this.handleAccelerometerEvent(event);
                 break;
         }
-
     }
 
     private void handleAccelerometerEvent(SensorEvent event) {
@@ -94,9 +96,34 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     }
 
     private void generateNumbersAndSetText() {
+        LinearLayout linearLayout = (LinearLayout) findViewById(R.id.layout_pictures);
+        linearLayout.removeAllViews();
         StringBuilder stringBuilder = new StringBuilder();
         for(int i = 1; i <= howManyDice; i++) {
-            stringBuilder.append("Value number ").append(i).append(" equals ").append(this.generateRandomNumber()).append("\n");
+            int randomNum = this.generateRandomNumber();
+            stringBuilder.append("Value number ").append(i).append(" equals ").append(randomNum).append("\n");
+            ImageView imageView = new ImageView(this);
+            switch (randomNum) {
+                case 1:
+                    imageView.setBackground(ContextCompat.getDrawable(this, R.drawable.dice_1));
+                    break;
+                case 2:
+                    imageView.setBackground(ContextCompat.getDrawable(this, R.drawable.dice_2));
+                    break;
+                case 3:
+                    imageView.setBackground(ContextCompat.getDrawable(this, R.drawable.dice_3));
+                    break;
+                case 4:
+                    imageView.setBackground(ContextCompat.getDrawable(this, R.drawable.dice_4));
+                    break;
+                case 5:
+                    imageView.setBackground(ContextCompat.getDrawable(this, R.drawable.dice_5));
+                    break;
+                case 6:
+                    imageView.setBackground(ContextCompat.getDrawable(this, R.drawable.dice_6));
+                    break;
+            }
+            linearLayout.addView(imageView);
         }
         String s = stringBuilder.toString();
         this.mNumber.setText(s);
