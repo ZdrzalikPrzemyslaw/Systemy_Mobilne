@@ -1,6 +1,7 @@
 package tech.szymanskazdrzalik.zad_3;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.graphics.BlurMaskFilter;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -9,6 +10,7 @@ import android.graphics.Point;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.Window;
 
 import androidx.annotation.Nullable;
 
@@ -22,6 +24,16 @@ public class DrawView extends View implements View.OnTouchListener {
     private int chosenColour = Color.RED;
     private int radius = 30;
     private boolean isBlurred = false;
+
+    private Bitmap mBitmap;
+    private Canvas mCanvas;
+
+    @Override
+    protected void onSizeChanged(int w, int h, int oldw, int oldh) {
+        super.onSizeChanged(w, h, oldw, oldh);
+        mBitmap = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888);
+        mCanvas = new Canvas(mBitmap);
+    }
 
     private class CustomPoint {
 
@@ -107,11 +119,12 @@ public class DrawView extends View implements View.OnTouchListener {
             paint.setMaskFilter(new BlurMaskFilter(8, BlurMaskFilter.Blur.NORMAL));
         }
         CustomPoint customPoint = new CustomPoint(point, radius, paint);
+        this.mCanvas.drawCircle(customPoint.getPoint().x, customPoint.getPoint().y, customPoint.getRadius(), customPoint.getPaint());
         pointList.add(customPoint);
     }
 
     public void erase() {
-        this.pointList.clear();
+        this.mBitmap.eraseColor(Color.TRANSPARENT);
         this.invalidate();
     }
 
@@ -133,8 +146,6 @@ public class DrawView extends View implements View.OnTouchListener {
 
     @Override
     protected void onDraw(Canvas canvas) {
-        for (CustomPoint point : pointList) {
-            canvas.drawCircle(point.getPoint().x, point.getPoint().y, point.getRadius(), point.getPaint());
-        }
+        canvas.drawBitmap(mBitmap, 0, 0, null);
     }
 }
