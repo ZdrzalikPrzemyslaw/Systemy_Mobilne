@@ -115,6 +115,10 @@ public class DrawView extends View implements View.OnTouchListener {
     private void drawPath(MotionEvent event) {
         this.mPath.lineTo(event.getX(), event.getY());
         this.mCanvas.drawPath(this.mPath, mPaint);
+        if (this.mPaint.getMaskFilter() == this.mBlur) {
+            this.mPath.reset();
+            this.mPath.moveTo(event.getX(), event.getY());
+        }
     }
 
     public void erase() {

@@ -38,7 +38,7 @@ public class DrawActivity extends AppCompatActivity {
         this.drawView.eraser();
     }
 
-    public void colourButtonOnCLick(View v) {
+    public void colourButtonOnClick(View v) {
         new ColorPickerPopup.Builder(this)
                 .initialColor(Color.RED) // Set initial color
                 .enableBrightness(true) // Enable brightness slider or not
@@ -54,6 +54,13 @@ public class DrawActivity extends AppCompatActivity {
                         drawView.setChosenColour(color);
                     }
                 });
+    }
+
+    public void hideButtonOnClick(View v) {
+        if (findViewById(R.id.buttonsLinearLayout).getVisibility() == View.VISIBLE)
+            findViewById(R.id.buttonsLinearLayout).setVisibility(View.INVISIBLE);
+        else
+            findViewById(R.id.buttonsLinearLayout).setVisibility(View.VISIBLE);
     }
 
 }
