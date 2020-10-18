@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Zad_3</string>
     <string name="draw_activity">Draw Activity</string>
-    <string name="erase">Erase</string>
+    <string name="clear_canvas">CLEAR CANVAS</string>
     <string name="normal">NORMAL</string>
     <string name="blur">BLUR</string>
     <string name="emboss">EMBOSS</string>

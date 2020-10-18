@@ -121,7 +121,7 @@ public class DrawView extends View implements View.OnTouchListener {
         }
     }
 
-    public void erase() {
+    public void clearCanvas() {
         this.mBitmap.eraseColor(Color.TRANSPARENT);
         this.invalidate();
     }

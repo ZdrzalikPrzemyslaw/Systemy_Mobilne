@@ -18,8 +18,8 @@ public class DrawActivity extends AppCompatActivity {
         drawView = (DrawView) findViewById(R.id.drawView);
     }
 
-    public void eraseButtonOnClick(View v) {
-        this.drawView.erase();
+    public void clearCanvasButtonOnClick(View v) {
+        this.drawView.clearCanvas();
     }
 
     public void setNormalButtonOnClick(View v) {

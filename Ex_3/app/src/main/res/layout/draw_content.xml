@@ -23,11 +23,11 @@
             android:orientation="vertical">
 
             <Button
-                android:id="@+id/eraseButton"
+                android:id="@+id/clearCanvasButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:onClick="eraseButtonOnClick"
-                android:text="@string/erase" />
+                android:onClick="clearCanvasButtonOnClick"
+                android:text="@string/clear_canvas" />
 
             <Button
                 android:id="@+id/setNormalButton"
