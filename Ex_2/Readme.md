@@ -4,4 +4,4 @@ The exercise was to create a simple application that would be able to open the a
 
 <p align="center">
     <img src="https://github.com/ZdrzalikPrzemyslaw/Systemy_Mobilne/blob/main/.github/Ex_2.png"
-     alt="Approximation plot" height="700"/>
+     alt="Ex 2 picture" height="700"/>

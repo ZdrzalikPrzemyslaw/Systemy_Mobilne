@@ -1,4 +1,4 @@
-# Interacting with Other Apps
+# Paint Application
 
 The exercise was to create a simple paint-esque application.
 
