@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <tech.szymanskazdrzalik.zad_3.DrawView
+        android:id="@+id/drawView"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="0dp"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/eraseButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="eraseButtonOnClick"
+                android:text="@string/erase" />
+
+            <Button
+                android:id="@+id/setNormalButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="setNormalButtonOnClick"
+                android:text="@string/normal" />
+
+            <Button
+                android:id="@+id/setBlurButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="setBlurButtonOnClick"
+                android:text="@string/blur" />
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
+</FrameLayout>
