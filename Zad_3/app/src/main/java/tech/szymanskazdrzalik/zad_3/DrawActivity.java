@@ -31,4 +31,8 @@ public class DrawActivity extends AppCompatActivity {
         this.drawView.setEmboss();
     }
 
+    public void eraserButtonOnClick(View v) {
+        this.drawView.eraser();
+    }
+
 }

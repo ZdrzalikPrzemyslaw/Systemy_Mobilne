@@ -5,4 +5,5 @@
     <string name="normal">NORMAL</string>
     <string name="blur">BLUR</string>
     <string name="emboss">EMBOSS</string>
+    <string name="eraser">ERASER</string>
 </resources>
