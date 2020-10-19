@@ -131,7 +131,6 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
     private int generateRandomNumber() {
         Random randomGenerator = new Random();
-        int randomNum = randomGenerator.nextInt(6) + 1;
-        return randomNum;
+        return randomGenerator.nextInt(6) + 1;
     }
 }
