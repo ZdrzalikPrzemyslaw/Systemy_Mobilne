@@ -1,10 +1,9 @@
 package tech.szymanskazdrzalik.zad_5;
 
 import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ListAdapter;
+import android.widget.CheckedTextView;
 import android.widget.Toast;
 
 import com.google.android.youtube.player.YouTubeBaseActivity;
@@ -13,38 +12,24 @@ import com.google.android.youtube.player.YouTubePlayer;
 import com.google.android.youtube.player.YouTubePlayerView;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class MainActivity extends YouTubeBaseActivity {
 
+    private final Map<String, String> videosMap = new HashMap<String, String>() {
+        {
+            put("Young Igi - Neandertalczyk", "BRodTWirKRM");
+            put("FTIMS CG Showreel", "Il1WDvX-qrg");
+            put("Tymek - Pomarańcze", "8M3VWV02T00");
+            put("Tymek - Beautiful", "CT7xfy8Nwrc");
+        }
+    };
     private YouTubePlayerView mYouTubePlayerView;
     private YouTubePlayer.OnInitializedListener onInitializedListener;
     private YouTubePlayer mYouTubePlayer;
-
-    private List<List<String>> videos = new ArrayList<List<String>>() {
-        {
-            add(new ArrayList<String>(){
-                {
-                    add("Young Igi - Neandertalczyk");
-                    add("FTIMS CG Showreel");
-                    add("Tymek - Pomarańcze");
-                    add("Tymek - Beautiful");
-                }
-            });
-            add(new ArrayList<String>(){
-                {
-                    add("BRodTWirKRM");
-                    add("Il1WDvX-qrg");
-                    add("8M3VWV02T00");
-                    add("CT7xfy8Nwrc");
-                }
-            });
-
-
-        }
-    };
-
-    private int chosenVideo = 0;
+    private String videoKey;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +41,7 @@ public class MainActivity extends YouTubeBaseActivity {
             @Override
             public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean b) {
                 try {
-                    youTubePlayer.loadVideo(videos.get(1).get(chosenVideo));
+                    youTubePlayer.loadVideo(videosMap.get(videoKey));
                     MainActivity.this.mYouTubePlayer = youTubePlayer;
                 } catch (Throwable t) {
                     Toast.makeText(MainActivity.this, "LOAD ERROR", Toast.LENGTH_SHORT).show();
@@ -78,12 +63,14 @@ public class MainActivity extends YouTubeBaseActivity {
                 mYouTubePlayerView.initialize("AIzaSyDDdVleA3IorMODeObfAqslgcSEpzNjkag", onInitializedListener);
                 dialog.dismiss();
             });
-            alertDialogBuilder.setSingleChoiceItems(videos.get(0).toArray(new String[0]), 0,
-                    (dialog, which) -> this.chosenVideo = which);
+            alertDialogBuilder.setSingleChoiceItems(videosMap.keySet().toArray(new String[0]), 0,
+                    (dialog, which) -> {
+                        this.videoKey = ((CheckedTextView)((AlertDialog) dialog).getListView().getChildAt(which)).getText().toString();
+                        System.out.println(this.videoKey);
+                    });
             AlertDialog alertDialog = alertDialogBuilder.create();
             alertDialog.show();
-        }
-        else {
+        } else {
             this.mYouTubePlayer.play();
         }
     }
