@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Zad_5</string>
+    <string name="play_video">PLAY VIDEO</string>
+    <string name="pause">PAUSE</string>
+    <string name="play">PLAY</string>
+    <string name="stop">STOP</string>
 </resources>
