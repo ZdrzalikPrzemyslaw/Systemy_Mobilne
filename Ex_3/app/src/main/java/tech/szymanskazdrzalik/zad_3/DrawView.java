@@ -159,10 +159,6 @@ public class DrawView extends View implements View.OnTouchListener {
         this.mPaint.setColor(colour);
     }
 
-    public void thicknessUp() {
-        this.mPaint.setStrokeWidth(this.mPaint.getStrokeWidth() + 1);
-    }
-
     private void setmBlurValue() {
         boolean setMask = false;
         if (this.mPaint.getMaskFilter() == this.mBlur)
@@ -179,10 +175,6 @@ public class DrawView extends View implements View.OnTouchListener {
     public void setThickness(int val) {
         this.mPaint.setStrokeWidth(val);
         setmBlurValue();
-    }
-
-    public void thicknessDown() {
-        this.mPaint.setStrokeWidth(this.mPaint.getStrokeWidth() - 1);
     }
 
     @Override
