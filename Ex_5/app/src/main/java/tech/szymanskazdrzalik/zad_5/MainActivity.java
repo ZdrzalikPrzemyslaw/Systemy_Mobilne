@@ -11,9 +11,7 @@ import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubePlayer;
 import com.google.android.youtube.player.YouTubePlayerView;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class MainActivity extends YouTubeBaseActivity {
@@ -65,7 +63,7 @@ public class MainActivity extends YouTubeBaseActivity {
             });
             alertDialogBuilder.setSingleChoiceItems(videosMap.keySet().toArray(new String[0]), 0,
                     (dialog, which) -> {
-                        this.videoKey = ((CheckedTextView)((AlertDialog) dialog).getListView().getChildAt(which)).getText().toString();
+                        this.videoKey = ((CheckedTextView) ((AlertDialog) dialog).getListView().getChildAt(which)).getText().toString();
                         System.out.println(this.videoKey);
                     });
             AlertDialog alertDialog = alertDialogBuilder.create();
