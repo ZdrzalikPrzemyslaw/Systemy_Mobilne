@@ -69,11 +69,12 @@ public class DrawView extends View implements View.OnTouchListener {
         mPaint.setStrokeJoin(Paint.Join.ROUND);
         mPaint.setStrokeCap(Paint.Cap.ROUND);
         mPaint.setStrokeWidth(30);
+
         mEmboss = new EmbossMaskFilter(new float[]{1, 1, 1},
                 0.4f, 6, 3.5f);
 
-
-        mBlur = new BlurMaskFilter(8, BlurMaskFilter.Blur.NORMAL);
+        setmBlurValue();
+        this.mPaint.setMaskFilter(null);
     }
 
     @Override
@@ -162,8 +163,22 @@ public class DrawView extends View implements View.OnTouchListener {
         this.mPaint.setStrokeWidth(this.mPaint.getStrokeWidth() + 1);
     }
 
+    private void setmBlurValue() {
+        boolean setMask = false;
+        if (this.mPaint.getMaskFilter() == this.mBlur)
+            setMask = true;
+        int blursize = (int)(mPaint.getStrokeWidth() / 2);
+        if (blursize <= 0)
+            blursize = 1;
+        mBlur = new BlurMaskFilter(blursize, BlurMaskFilter.Blur.NORMAL);
+        if (setMask)
+            this.mPaint.setMaskFilter(mBlur);
+
+    }
+
     public void setThickness(int val) {
         this.mPaint.setStrokeWidth(val);
+        setmBlurValue();
     }
 
     public void thicknessDown() {
