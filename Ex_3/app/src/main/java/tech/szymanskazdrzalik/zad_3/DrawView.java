@@ -74,7 +74,6 @@ public class DrawView extends View implements View.OnTouchListener {
                 0.4f, 6, 3.5f);
 
         setmBlurValue();
-        this.mPaint.setMaskFilter(null);
     }
 
     @Override
@@ -116,7 +115,7 @@ public class DrawView extends View implements View.OnTouchListener {
     private void drawPath(MotionEvent event) {
         this.mPath.lineTo(event.getX(), event.getY());
         this.mCanvas.drawPath(this.mPath, mPaint);
-        if (this.mPaint.getMaskFilter() == this.mBlur) {
+        if (this.mPaint.getMaskFilter() != null && this.mPaint.getMaskFilter().getClass() == this.mBlur.getClass()) {
             this.mPath.reset();
             this.mPath.moveTo(event.getX(), event.getY());
         }
@@ -161,7 +160,7 @@ public class DrawView extends View implements View.OnTouchListener {
 
     private void setmBlurValue() {
         boolean setMask = false;
-        if (this.mPaint.getMaskFilter() == this.mBlur)
+        if (this.mPaint.getMaskFilter() != null && this.mPaint.getMaskFilter().getClass() == this.mBlur.getClass())
             setMask = true;
         int blursize = (int)(mPaint.getStrokeWidth() / 2);
         if (blursize <= 0)
