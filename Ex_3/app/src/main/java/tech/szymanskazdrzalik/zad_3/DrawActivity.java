@@ -6,8 +6,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.NumberPicker;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import java.io.IOException;
 
 import top.defaults.colorpicker.ColorPickerPopup;
 
@@ -69,6 +72,17 @@ public class DrawActivity extends AppCompatActivity {
 
     public void sizeButtonOnClick(View v) {
         this.showDialog();
+    }
+
+    public void savePictureButtonOnClick(View v) {
+        this.drawView.chooseFileName();
+        try {
+            this.drawView.savePicture();
+        } catch (IOException e) {
+            Toast.makeText(this, "Unable to save picture", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        Toast.makeText(this, "Saved Picture to Gallery", Toast.LENGTH_SHORT).show();
     }
 
     private void showDialog() {

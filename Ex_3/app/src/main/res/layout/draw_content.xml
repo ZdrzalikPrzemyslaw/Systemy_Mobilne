@@ -70,6 +70,14 @@
                 android:layout_height="wrap_content"
                 android:onClick="sizeButtonOnClick"
                 android:text="@string/size" />
+            <Button
+                android:id="@+id/savePicture"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="savePictureButtonOnClick"
+                android:text="@string/save" />
+
+
         </LinearLayout>
 
         <Button

@@ -11,4 +11,6 @@
     <string name="size">SIZE</string>
     <string name="cancel">Cancel</string>
     <string name="set">Set</string>
+    <string name="save">SAVE</string>
+    <string name="save_picture">Save Picture</string>
 </resources>
